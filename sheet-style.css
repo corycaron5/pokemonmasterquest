@@ -1,0 +1,273 @@
+/*------------------------------------------------*\
+  #GENERAL
+\*------------------------------------------------*/
+
+
+/* --------- Text ------------- */
+
+span.sheet-bold{
+  font-weight: 800;
+  font-size: medium;
+}
+
+label {
+  margin: 5px 0px 5px 0px;
+  font-size: 1.1em;
+}
+
+
+/* --------- Inputs ------------- */
+
+input[type="text"] {
+  background-color: transparent;
+  border-style: none none solid none;
+  border-color: black;
+}
+
+input[type="number"] {
+  background-color: transparent;
+  border: none;
+}
+
+textarea {
+  background-color: transparent;
+  width: 89%;
+  height: 70%;
+  margin-right: 15px;
+}
+
+input[type="checkbox"].sheet-checkbox {
+  border-style: solid black;
+  border-radius: 0px;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="number"]:focus{
+  background-color: #F6CED8;
+}
+
+
+/*-----------------------------------------------------------------*\
+  #SECTIONS
+\*-----------------------------------------------------------------*/
+
+
+/* --------- General Section Styling ------------- */
+.sheet-flex-left-nowrap {
+  display: flex;
+  align-items: flex-start;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+}
+
+.sheet-flex-left-wrap {
+  display: flex;
+  align-items: flex-start;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+
+.sheet-flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.sheet-section {
+    padding: 5px;
+    min-height: 90%;
+}
+
+.sheet-break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+/*Configure the tab buttons*/
+.sheet-character,
+.sheet-pc,
+.sheet-party,
+.sheet-badges {
+	display: none;
+}
+
+/* show the selected tab */
+.sheet-tabstoggle[value="character"] ~ div.sheet-character,
+.sheet-tabstoggle[value="pc"] ~ div.sheet-pc,
+.sheet-tabstoggle[value="party"] ~ div.sheet-party, 
+.sheet-tabstoggle[value="badges"] ~ div.sheet-badges {
+	display: block;
+}
+
+/*Configure the tab buttons*/
+.sheet-kanto,
+.sheet-custom {
+	display: none;
+}
+
+/* show the selected tab */
+.sheet-badgetoggle[value="kanto"] ~ div.sheet-kanto,
+.sheet-badgetoggle[value="custom"] ~ div.sheet-custom{
+	display: block;
+}
+
+img {
+  max-height: 100px;
+}
+
+input.sheet-toggle-stats-show:not(:checked) ~ div.sheet-pokestats,
+input.sheet-toggle-stats-hide:checked ~ div.sheet-pokestats {
+    display: none;
+}
+
+input.sheet-toggle-combat-show:not(:checked) ~ div.sheet-combat,
+input.sheet-toggle-combat-hide:checked ~ div.sheet-combat {
+    display: none;
+}
+
+button[type="roll"].sheet-pokeball-button {
+	content: '';
+	background-image: url(https://raw.githubusercontent.com/corycaron5/pokemonmasterquest/main/pokeball.png);
+	background-size: 26px 26px;
+	background-repeat: no-repeat;
+	width: 26px;
+	height: 26px;
+	border-style: none;
+	background-color: transparent;
+	margin-left: 5px;
+}
+
+button[type="roll"].sheet-pokeball-button:before { content: ''; }
+
+button[type="roll"].sheet-pokeball-button:hover {
+	background-position: 0;
+}
+
+button[type="roll"].sheet-move-button {
+	content: '';
+	background-image: url(https://raw.githubusercontent.com/corycaron5/pokemonmasterquest/main/bicycle.png);
+	background-size: 26px 26px;
+	background-repeat: no-repeat;
+	width: 26px;
+	height: 26px;
+	border-style: none;
+	background-color: transparent;
+	margin-left: 5px;
+}
+
+button[type="roll"].sheet-move-button:before { content: ''; }
+
+button[type="roll"].sheet-move-button:hover {
+	background-position: 0;
+}
+
+
+button[type="roll"].sheet-investigation-button {
+	content: '';
+	background-image: url(https://raw.githubusercontent.com/corycaron5/pokemonmasterquest/main/magnifying%20glass.png);
+	background-size: 26px 26px;
+	background-repeat: no-repeat;
+	width: 26px;
+	height: 26px;
+	border-style: none;
+	background-color: transparent;
+	margin-left: 5px;
+}
+
+button[type="roll"].sheet-investigation-button:before { content: ''; }
+
+button[type="roll"].sheet-investigation-button:hover {
+	background-position: 0;
+}
+
+button[type="roll"].sheet-stealth-button {
+	content: '';
+	background-image: url(https://raw.githubusercontent.com/corycaron5/pokemonmasterquest/main/ninja.png);
+	background-size: 26px 26px;
+	background-repeat: no-repeat;
+	width: 26px;
+	height: 26px;
+	border-style: none;
+	background-color: transparent;
+	margin-left: 5px;
+}
+
+button[type="roll"].sheet-stealth-button:before { content: ''; }
+
+button[type="roll"].sheet-stealth-button:hover {
+	background-position: 0;
+}
+
+button[type="roll"].sheet-charisma-button {
+	content: '';
+	background-image: url(https://raw.githubusercontent.com/corycaron5/pokemonmasterquest/main/speaker.png);
+	background-size: 26px 26px;
+	background-repeat: no-repeat;
+	width: 26px;
+	height: 26px;
+	border-style: none;
+	background-color: transparent;
+	margin-left: 5px;
+}
+
+button[type="roll"].sheet-charisma-button:before { content: ''; }
+
+button[type="roll"].sheet-charisma-button:hover {
+	background-position: 0;
+}
+
+button[type="roll"].sheet-encounter-button {
+	content: '';
+	background-image: url(https://raw.githubusercontent.com/corycaron5/pokemonmasterquest/main/Exclamation%20Black.png);
+	background-size: 26px 26px;
+	background-repeat: no-repeat;
+	width: 64px;
+	height: 26px;
+	border-style: none;
+	background-color: transparent;
+	margin-left: 5px;
+}
+
+button[type="roll"].sheet-encounter-button:before { content: ''; }
+
+button[type="roll"].sheet-encounter-button:hover {
+	background-position: 0;
+}
+
+button[type="roll"].sheet-doubleroll:before {
+	font-family: 'dicefontd12';
+	content: 'l';
+}
+
+button[type="roll"].sheet-singleroll:before {
+	font-family: 'dicefontd6';
+	content: 'f';
+}
+
+button[type="roll"].sheet-speedroll:before {
+	font-family: 'Pictos';
+	content: 'e';
+}
+
+button.sheet-badge {
+	margin-right: 4px;
+	margin-bottom: 4px;
+}
+
+button.sheet-badge:before { 
+	content: '';
+	width: 26px;
+	height: 26px;
+}
+
+button.sheet-badge ~ span {
+	padding: 4px;
+}
+
+input.sheet-badgedisplay:not([value="1"]) ~ span > img{
+	visibility: hidden;
+}
+
+input.sheet-padded-left {
+	margin-left: 32px;
+}
