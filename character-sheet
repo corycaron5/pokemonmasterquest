@@ -1,0 +1,851 @@
+<div class="flex-center">
+	<img src="https://assets.pokemon.com/assets/cms2/img/watch-pokemon-tv/seasons/season05/season05_logo_169_en.jpg" />
+</div>
+<div>
+	<div class="flex-center">
+		<button type="action" name="act_character" >Character</button>
+		<button type="action" name="act_party" >Party</button>
+		<button type="action" name="act_pc" >PC</button>
+	</div>
+</div>
+<input type='hidden' class='sheet-tabstoggle' name='attr_sheetTab'  value='character'  />
+
+<div class="character">
+	<div class="2colrow">
+		<div class="col">
+			<h2>Attributes</h2>
+			<div class="flex-left-nowrap">
+				<label>Investigation </label>
+				<input name="attr_investigation" type="number" value=0 min=0 max=10>
+				<button name="roll_investigation" type="roll" class="investigation-button" value="&{template:default} {{name=Investigation}} {{Result=[[d20+(@{investigation})]]}}"></button>
+			</div>
+			<div class="flex-left-nowrap">
+				<label>Stealth </label>
+				<input name="attr_stealth" type="number" value=0 min=0 max=10>
+				<button name="roll_stealth" type="roll" class="stealth-button" value="&{template:default} {{name=Stealth}} {{Result=[[d20+(@{stealth})]]}}"></button>
+			</div>
+			<div class="flex-left-nowrap">
+				<label>Charisma </label>
+				<input name="attr_charisma" type="number" value=0 min=0 max=10>
+				<button name="roll_charisma" type="roll" class="charisma-button" value="&{template:default} {{name=Charisma}} {{Result=[[2*(@{charisma})]]%}}"></button>
+			</div>
+			<div class="flex-left-nowrap">
+				<label>Karma </label>
+				<input name="attr_karma" type="number" value=0 min=-10 max=10>
+			</div>
+			<div class="flex-left-nowrap">
+				<label>Trainer Wins </label>
+				<input name="attr_wins" type="number" value=0 min=0>
+			</div>
+			<br/>
+			<h2>Key Items</h2>
+			<div class="flex-left-nowrap">
+				<label>Bicycle </label>
+				<input type="checkbox" name='attr_bicycle' value="1">
+			</div>
+			<div class="flex-left-nowrap">
+				<label>Hot Air Balloon</label>
+				<input type="checkbox" name='attr_balloon' value="1">
+			</div>
+			<div class="flex-left-nowrap">
+				<label>Inflatable Raft</label>
+				<input type="checkbox" name='attr_raft' value="1">
+			</div>
+			<div class="flex-left-nowrap">
+				<label>Fishing Rod</label>
+				<select name="attr_rod">
+					<option value="0" selected="selected">None</option>
+					<option value="1">Old Rod</option>
+					<option value="2">Good Rod</option>
+					<option value="3">Great Rod</option>
+				</select>
+			</div>
+			<h2>Actions</h2>
+			<div class="flex-left-nowrap">
+				<label>Movement</label>
+				<button name="roll_movement" type="roll" class="move-button" value="&{template:default} {{name=Movement Roll}} {{Result=[[1d4+(@{bicycle}*1d4)]]}}"></button>
+			</div>
+			<div class="flex-left-nowrap">
+				<label>Catch</label>
+				<button name="roll_catch" type="roll" class="pokeball-button" value="&{template:default} {{name=Catching Roll}} {{Result=[[1d20+@{ball}+(@{health})]]}}"></button>
+			</div>
+			<div class="flex-left-nowrap">
+				<select name="attr_ball">
+					<option value="1" selected="selected">Pokeball</option>
+					<option value="2">Great ball</option>
+					<option value="3">Ultra ball/Safari ball</option>
+					<option value="25">Master ball</option>
+				</select>
+				<select name="attr_health">
+					<option value="-2" selected="selected">Full</option>
+					<option value="-1">Injured</option>
+					<option value="0">Greatly Injured</option>
+				</select>
+			</div>
+			<div class="flex-left-nowrap">
+				<label>Encounter</label>
+				<select name="attr_zone">
+					<option value="GreenTerritory" selected="selected">Green</option>
+					<option value="YellowTerritory">Yellow</option>
+					<option value="OrangeTerritory">Orange</option>
+					<option value="LightBlueTerritory">Light Blue</option>
+					<option value="LightPinkTerritory">Light Pink</option>
+					<option value="DarkBlueTerritory">Dark Blue</option>
+					<option value="RedTerritory">Red</option>
+					<option value="OldRod">Old Rod</option>
+					<option value="GoodRod">Good Rod</option>
+					<option value="GreatRod">Great Rod</option>
+					<option value="CeruleanCave">Cerulean Cave</option>
+					<option value="DiglettTunnel">Diglett's Tunnel</option>
+					<option value="FishAlleyGrass">Fisherman's Alley Grass Patch</option>
+					<option value="MountMoon">Mount Moon</option>
+					<option value="PalletTownGrass">Pallet Town Grass</option>
+					<option value="PokeMansionPsychic">Pokemon Mansion Good</option>
+					<option value="Starter">Pokemon Mansion Neutral</option>
+					<option value="PokeMansionGhost">Pokemon Mansion Evil</option>
+					<option value="PokemonTower">Pokemon Tower</option>
+					<option value="PowerPlant">Power Plant</option>
+					<option value="RockTunnel">Rock Tunnel</option>
+					<option value="SafariZone">Safari Zone</option>
+					<option value="SeafoamIsland">Seafoam Island</option>
+					<option value="ViridianForest">Viridian Forest</option>
+					<option value="Volcano">Volcano</option>
+				</select>
+				<button name="roll_encounter" type="roll" class="encounter-button" value="&{template:default} {{name=Encounter Roll}} {{Color=[[1t[Shiny]]]}} {{Gender=[[1t[Gender]]]}} {{Pokemon=[[1t[@{zone}]]]}}"></button>
+			</div>
+		</div>
+		<div class="col">
+			<div class="flex-left-wrap">
+				<h2>Inventory</h2>
+				<div class="break"></div>
+			</div>
+			<div class="2colrow">
+				<div class="col">
+					<div class="flex-left-nowrap">
+						<label>Pokemoney </label>
+						<input name="attr_money" type="text" value="0">
+					</div>
+					<div class="flex-left-nowrap">
+						<label>Item</label>
+						<label>Amount</label>
+					</div>
+					<fieldset class="repeating_items"> 
+						<div class="flex-left-nowrap">
+							<input type="text" name='attr_item'>
+							<input type="number" name='attr_itemcount' value=0 min=0>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="pc">
+	<h2>Pokemon Storage Box</h2>
+	<fieldset class="repeating_pc"> 
+		<div class="flex-left-wrap">
+			<input type="text" name='attr_party1name'>
+			<input type="checkbox" class="toggle-stats-show" name='attr_party1show' value="1">
+			<div class="break"></div>
+			<div class="pokestats">
+				<div class="flex-left-nowrap">
+					<label>HP</label>
+					<input type="number" name='attr_pchp' value=0 min=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Attack</label>
+					<input type="number" name='attr_pcatk' value=0 min=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Defense</label>
+					<input type="number" name='attr_pcdef' value=0 min=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Atk</label>
+					<input type="number" name='attr_pcspatk' value=0 min=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Def</label>
+					<input type="number" name='attr_pcspdef' value=0 min=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Speed</label>
+					<input type="number" name='attr_pcspeed' value=0 min=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Color</label>
+					<select name="attr_pccolor">
+						<option value="Normal" selected="selected">Normal</option>
+						<option value="Shiny">Shiny</option>
+					</select>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Gender</label>
+					<select name="attr_pcgender">
+						<option value="Female" selected="selected">Female</option>
+						<option value="Male">Male</option>
+					</select>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Everstone</label>
+					<input type="checkbox" name='attr_pcever' value="1">
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Victories</label>
+					<input type="number" name='attr_pcwins' value=0 min=0>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+</div>
+<div class="party">
+	<div class="col">
+		<h1>Party</h1>
+		<div class="flex-left-wrap">
+			<h2>Pokemon 1</h2>
+			<input type="text" name='attr_party1name'>
+			<input type="checkbox" class="toggle-stats-show" name='attr_party1statsshow' value="1">
+			<input type="checkbox" class="toggle-combat-show" name='attr_party1combatshow' value="1">
+			<div class="break"></div>
+			<div class="pokestats">
+				<h3>Stats</h3>
+				<div class="flex-left-nowrap">
+					<label>HP</label>
+					<input type="number" name='attr_party1hp' value=0 min=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Attack</label>
+					<input type="number" name='attr_party1atk' value=0 min=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Defense</label>
+					<input type="number" name='attr_party1def' value=0 min=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Atk</label>
+					<input type="number" name='attr_party1spatk' value=0 min=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Def</label>
+					<input type="number" name='attr_party1spdef' value=0 min=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Speed</label>
+					<input type="number" name='attr_party1speed' value=0 min=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Color</label>
+					<select name="attr_party1color">
+						<option value="Normal" selected="selected">Normal</option>
+						<option value="Shiny">Shiny</option>
+					</select>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Gender</label>
+					<select name="attr_party1gender">
+						<option value="Female" selected="selected">Female</option>
+						<option value="Male">Male</option>
+					</select>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Everstone</label>
+					<input type="checkbox" name='attr_party1ever' value="1">
+				</div>
+			</div>
+			<div class="break"></div>
+			<div class="combat">
+				<h3>Battle</h3>
+				<div class="flex-left-nowrap">
+					<label>Effectiveness</label>
+					<select name="attr_effectiveness1">
+						<option value="-3">Immune</option>
+						<option value="-2">Not Effective x2</option>
+						<option value="-1">Not Effective</option>
+						<option value="0" selected="selected">Normal</option>
+						<option value="1">Super Effective</option>
+						<option value="2">Super Effective x2</option>
+					</select>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Current HP</label>
+					<input type="number" name='attr_party1currenthp' value=0 min=0>
+					<label>/</label>
+					<label><span name="attr_party1maxhp"></span></label>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Attack</label>
+					<button name="roll_attack" type="roll" value="&{template:default} {{name=@{party1name} Attack}} {{Result=[[d6+(@{party1atk})+(@{effectiveness1})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Defense</label>
+					<button name="roll_defense" type="roll" value="&{template:default} {{name=@{party1name} Defense}} {{Result=[[d6+(@{party1def})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Atk</label>
+					<button name="roll_spatk" type="roll" value="&{template:default} {{name=@{party1name} Sp. Atk}} {{Result=[[d6+(@{party1spatk})+(@{effectiveness1})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Def</label>
+					<button name="roll_spdef" type="roll" value="&{template:default} {{name=@{party1name} Sp. Def}} {{Result=[[d6+(@{party1spdef})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Speed</label>
+					<button name="roll_speed" type="roll" value="&{template:default} {{name=@{party1name} Speed}} {{Result=[[(@{party1speed})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Victories</label>
+					<input type="number" name='attr_party1wins' value=0 min=0>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="flex-left-wrap">
+			<h2>Pokemon 2</h2>
+			<input type="text" name='attr_party2name'>
+			<input type="checkbox" class="toggle-stats-show" name='attr_party2statsshow' value="2">
+			<input type="checkbox" class="toggle-combat-show" name='attr_party2combatshow' value="2">
+			<div class="break"></div>
+			<div class="pokestats">
+				<h3>Stats</h3>
+				<div class="flex-left-nowrap">
+					<label>HP</label>
+					<input type="number" name='attr_party2hp' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Attack</label>
+					<input type="number" name='attr_party2atk' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Defense</label>
+					<input type="number" name='attr_party2def' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Atk</label>
+					<input type="number" name='attr_party2spatk' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Def</label>
+					<input type="number" name='attr_party2spdef' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Speed</label>
+					<input type="number" name='attr_party2speed' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Color</label>
+					<select name="attr_party2color">
+						<option value="Normal" selected="selected">Normal</option>
+						<option value="Shiny">Shiny</option>
+					</select>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Gender</label>
+					<select name="attr_party2gender">
+						<option value="Female" selected="selected">Female</option>
+						<option value="Male">Male</option>
+					</select>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Everstone</label>
+					<input type="checkbox" name='attr_party2ever' value="2">
+				</div>
+			</div>
+			<div class="break"></div>
+			<div class="combat">
+				<h3>Battle</h3>
+				<div class="flex-left-nowrap">
+					<label>Effectiveness</label>
+					<select name="attr_effectiveness2">
+						<option value="-3">Immune</option>
+						<option value="-2">Not Effective x2</option>
+						<option value="-1">Not Effective</option>
+						<option value="0" selected="selected">Normal</option>
+						<option value="1">Super Effective</option>
+						<option value="2">Super Effective x2</option>
+					</select>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Current HP</label>
+					<input type="number" name='attr_party2currenthp' value=0 min=0>
+					<label>/</label>
+					<label><span name="attr_party2maxhp"></span></label>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Attack</label>
+					<button name="roll_attack" type="roll" value="&{template:default} {{name=@{party2name} Attack}} {{Result=[[d6+(@{party2atk})+(@{effectiveness2})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Defense</label>
+					<button name="roll_defense" type="roll" value="&{template:default} {{name=@{party2name} Defense}} {{Result=[[d6+(@{party2def})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Atk</label>
+					<button name="roll_spatk" type="roll" value="&{template:default} {{name=@{party2name} Sp. Atk}} {{Result=[[d6+(@{party2spatk})+(@{effectiveness2})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Def</label>
+					<button name="roll_spdef" type="roll" value="&{template:default} {{name=@{party2name} Sp. Def}} {{Result=[[d6+(@{party2spdef})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Speed</label>
+					<button name="roll_speed" type="roll" value="&{template:default} {{name=@{party2name} Speed}} {{Result=[[(@{party2speed})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Victories</label>
+					<input type="number" name='attr_party2wins' value=0>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="flex-left-wrap">
+			<h2>Pokemon 3</h2>
+			<input type="text" name='attr_party3name'>
+			<input type="checkbox" class="toggle-stats-show" name='attr_party3statsshow' value="3">
+			<input type="checkbox" class="toggle-combat-show" name='attr_party3combatshow' value="3">
+			<div class="break"></div>
+			<div class="pokestats">
+				<h3>Stats</h3>
+				<div class="flex-left-nowrap">
+					<label>HP</label>
+					<input type="number" name='attr_party3hp' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Attack</label>
+					<input type="number" name='attr_party3atk' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Defense</label>
+					<input type="number" name='attr_party3def' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Atk</label>
+					<input type="number" name='attr_party3spatk' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Def</label>
+					<input type="number" name='attr_party3spdef' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Speed</label>
+					<input type="number" name='attr_party3speed' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Color</label>
+					<select name="attr_party3color">
+						<option value="Normal" selected="selected">Normal</option>
+						<option value="Shiny">Shiny</option>
+					</select>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Gender</label>
+					<select name="attr_party3gender">
+						<option value="Female" selected="selected">Female</option>
+						<option value="Male">Male</option>
+					</select>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Everstone</label>
+					<input type="checkbox" name='attr_party3ever' value="3">
+				</div>
+			</div>
+			<div class="break"></div>
+			<div class="combat">
+				<h3>Battle</h3>
+				<div class="flex-left-nowrap">
+					<label>Effectiveness</label>
+					<select name="attr_effectiveness3">
+						<option value="-3">Immune</option>
+						<option value="-2">Not Effective x2</option>
+						<option value="-1">Not Effective</option>
+						<option value="0" selected="selected">Normal</option>
+						<option value="1">Super Effective</option>
+						<option value="2">Super Effective x2</option>
+					</select>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Current HP</label>
+					<input type="number" name='attr_party3currenthp' value=0 min=0>
+					<label>/</label>
+					<label><span name="attr_party3maxhp"></span></label>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Attack</label>
+					<button name="roll_attack" type="roll" value="&{template:default} {{name=@{party3name} Attack}} {{Result=[[d6+(@{party3atk})+(@{effectiveness3})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Defense</label>
+					<button name="roll_defense" type="roll" value="&{template:default} {{name=@{party3name} Defense}} {{Result=[[d6+(@{party3def})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Atk</label>
+					<button name="roll_spatk" type="roll" value="&{template:default} {{name=@{party3name} Sp. Atk}} {{Result=[[d6+(@{party3spatk})+(@{effectiveness3})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Def</label>
+					<button name="roll_spdef" type="roll" value="&{template:default} {{name=@{party3name} Sp. Def}} {{Result=[[d6+(@{party3spdef})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Speed</label>
+					<button name="roll_speed" type="roll" value="&{template:default} {{name=@{party3name} Speed}} {{Result=[[(@{party3speed})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Victories</label>
+					<input type="number" name='attr_party3wins' value=0>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="flex-left-wrap">
+			<h2>Pokemon 4</h2>
+			<input type="text" name='attr_party4name'>
+			<input type="checkbox" class="toggle-stats-show" name='attr_party4statsshow' value="4">
+			<input type="checkbox" class="toggle-combat-show" name='attr_party4combatshow' value="4">
+			<div class="break"></div>
+			<div class="pokestats">
+				<h3>Stats</h3>
+				<div class="flex-left-nowrap">
+					<label>HP</label>
+					<input type="number" name='attr_party4hp' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Attack</label>
+					<input type="number" name='attr_party4atk' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Defense</label>
+					<input type="number" name='attr_party4def' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Atk</label>
+					<input type="number" name='attr_party4spatk' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Def</label>
+					<input type="number" name='attr_party4spdef' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Speed</label>
+					<input type="number" name='attr_party4speed' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Color</label>
+					<select name="attr_party4color">
+						<option value="Normal" selected="selected">Normal</option>
+						<option value="Shiny">Shiny</option>
+					</select>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Gender</label>
+					<select name="attr_party4gender">
+						<option value="Female" selected="selected">Female</option>
+						<option value="Male">Male</option>
+					</select>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Everstone</label>
+					<input type="checkbox" name='attr_party4ever' value="4">
+				</div>
+			</div>
+			<div class="break"></div>
+			<div class="combat">
+				<h3>Battle</h3>
+				<div class="flex-left-nowrap">
+					<label>Effectiveness</label>
+					<select name="attr_effectiveness4">
+						<option value="-3">Immune</option>
+						<option value="-2">Not Effective x2</option>
+						<option value="-1">Not Effective</option>
+						<option value="0" selected="selected">Normal</option>
+						<option value="1">Super Effective</option>
+						<option value="2">Super Effective x2</option>
+					</select>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Current HP</label>
+					<input type="number" name='attr_party4currenthp' value=0 min=0>
+					<label>/</label>
+					<label><span name="attr_party4maxhp"></span></label>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Attack</label>
+					<button name="roll_attack" type="roll" value="&{template:default} {{name=@{party4name} Attack}} {{Result=[[d6+(@{party4atk})+(@{effectiveness4})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Defense</label>
+					<button name="roll_defense" type="roll" value="&{template:default} {{name=@{party4name} Defense}} {{Result=[[d6+(@{party4def})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Atk</label>
+					<button name="roll_spatk" type="roll" value="&{template:default} {{name=@{party4name} Sp. Atk}} {{Result=[[d6+(@{party4spatk})+(@{effectiveness4})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Def</label>
+					<button name="roll_spdef" type="roll" value="&{template:default} {{name=@{party4name} Sp. Def}} {{Result=[[d6+(@{party4spdef})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Speed</label>
+					<button name="roll_speed" type="roll" value="&{template:default} {{name=@{party4name} Speed}} {{Result=[[(@{party4speed})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Victories</label>
+					<input type="number" name='attr_party4wins' value=0>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="flex-left-wrap">
+			<h2>Pokemon 5</h2>
+			<input type="text" name='attr_party5name'>
+			<input type="checkbox" class="toggle-stats-show" name='attr_party5statsshow' value="5">
+			<input type="checkbox" class="toggle-combat-show" name='attr_party5combatshow' value="5">
+			<div class="break"></div>
+			<div class="pokestats">
+				<h3>Stats</h3>
+				<div class="flex-left-nowrap">
+					<label>HP</label>
+					<input type="number" name='attr_party5hp' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Attack</label>
+					<input type="number" name='attr_party5atk' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Defense</label>
+					<input type="number" name='attr_party5def' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Atk</label>
+					<input type="number" name='attr_party5spatk' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Def</label>
+					<input type="number" name='attr_party5spdef' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Speed</label>
+					<input type="number" name='attr_party5speed' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Color</label>
+					<select name="attr_party5color">
+						<option value="Normal" selected="selected">Normal</option>
+						<option value="Shiny">Shiny</option>
+					</select>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Gender</label>
+					<select name="attr_party5gender">
+						<option value="Female" selected="selected">Female</option>
+						<option value="Male">Male</option>
+					</select>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Everstone</label>
+					<input type="checkbox" name='attr_party5ever' value="5">
+				</div>
+			</div>
+			<div class="break"></div>
+			<div class="combat">
+				<h3>Battle</h3>
+				<div class="flex-left-nowrap">
+					<label>Effectiveness</label>
+					<select name="attr_effectiveness5">
+						<option value="-3">Immune</option>
+						<option value="-2">Not Effective x2</option>
+						<option value="-1">Not Effective</option>
+						<option value="0" selected="selected">Normal</option>
+						<option value="1">Super Effective</option>
+						<option value="2">Super Effective x2</option>
+					</select>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Current HP</label>
+					<input type="number" name='attr_party5currenthp' value=0 min=0>
+					<label>/</label>
+					<label><span name="attr_party5maxhp"></span></label>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Attack</label>
+					<button name="roll_attack" type="roll" value="&{template:default} {{name=@{party5name} Attack}} {{Result=[[d6+(@{party5atk})+(@{effectiveness5})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Defense</label>
+					<button name="roll_defense" type="roll" value="&{template:default} {{name=@{party5name} Defense}} {{Result=[[d6+(@{party5def})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Atk</label>
+					<button name="roll_spatk" type="roll" value="&{template:default} {{name=@{party5name} Sp. Atk}} {{Result=[[d6+(@{party5spatk})+(@{effectiveness5})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Def</label>
+					<button name="roll_spdef" type="roll" value="&{template:default} {{name=@{party5name} Sp. Def}} {{Result=[[d6+(@{party5spdef})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Speed</label>
+					<button name="roll_speed" type="roll" value="&{template:default} {{name=@{party5name} Speed}} {{Result=[[(@{party5speed})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Victories</label>
+					<input type="number" name='attr_party5wins' value=0>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="flex-left-wrap">
+			<h2>Pokemon 6</h2>
+			<input type="text" name='attr_party6name'>
+			<input type="checkbox" class="toggle-stats-show" name='attr_party6statsshow' value="6">
+			<input type="checkbox" class="toggle-combat-show" name='attr_party6combatshow' value="6">
+			<div class="break"></div>
+			<div class="pokestats">
+				<h3>Stats</h3>
+				<div class="flex-left-nowrap">
+					<label>HP</label>
+					<input type="number" name='attr_party6hp' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Attack</label>
+					<input type="number" name='attr_party6atk' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Defense</label>
+					<input type="number" name='attr_party6def' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Atk</label>
+					<input type="number" name='attr_party6spatk' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Def</label>
+					<input type="number" name='attr_party6spdef' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Speed</label>
+					<input type="number" name='attr_party6speed' value=0>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Color</label>
+					<select name="attr_party6color">
+						<option value="Normal" selected="selected">Normal</option>
+						<option value="Shiny">Shiny</option>
+					</select>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Gender</label>
+					<select name="attr_party6gender">
+						<option value="Female" selected="selected">Female</option>
+						<option value="Male">Male</option>
+					</select>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Everstone</label>
+					<input type="checkbox" name='attr_party6ever' value="6">
+				</div>
+			</div>
+			<div class="break"></div>
+			<div class="combat">
+				<h3>Battle</h3>
+				<div class="flex-left-nowrap">
+					<label>Effectiveness</label>
+					<select name="attr_effectiveness6">
+						<option value="-3">Immune</option>
+						<option value="-2">Not Effective x2</option>
+						<option value="-1">Not Effective</option>
+						<option value="0" selected="selected">Normal</option>
+						<option value="1">Super Effective</option>
+						<option value="2">Super Effective x2</option>
+					</select>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Current HP</label>
+					<input type="number" name='attr_party6currenthp' value=0 min=0>
+					<label>/</label>
+					<label><span name="attr_party6maxhp"></span></label>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Attack</label>
+					<button name="roll_attack" type="roll" value="&{template:default} {{name=@{party6name} Attack}} {{Result=[[d6+(@{party6atk})+(@{effectiveness6})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Defense</label>
+					<button name="roll_defense" type="roll" value="&{template:default} {{name=@{party6name} Defense}} {{Result=[[d6+(@{party6def})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Atk</label>
+					<button name="roll_spatk" type="roll" value="&{template:default} {{name=@{party6name} Sp. Atk}} {{Result=[[d6+(@{party6spatk})+(@{effectiveness6})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Sp. Def</label>
+					<button name="roll_spdef" type="roll" value="&{template:default} {{name=@{party6name} Sp. Def}} {{Result=[[d6+(@{party6spdef})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Speed</label>
+					<button name="roll_speed" type="roll" value="&{template:default} {{name=@{party6name} Speed}} {{Result=[[(@{party6speed})]]}}"></button>
+				</div>
+				<div class="flex-left-nowrap">
+					<label>Victories</label>
+					<input type="number" name='attr_party6wins' value=0>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/worker">
+    const buttonlist = ["character","pc", "party"];
+    buttonlist.forEach(button => {
+        on(`clicked:${button}`, function() {
+            setAttrs({
+                sheetTab: button
+            });
+        });
+    });
+	on("change:party1hp sheet:opened", function() {
+		getAttrs(["party1hp"], function(values) {
+			let hp = parseInt(values.party1hp)||0;
+			setAttrs({
+				"party1maxhp": hp
+			});
+		});
+	});
+	on("change:party2hp sheet:opened", function() {
+		getAttrs(["party2hp"], function(values) {
+			let hp = parseInt(values.party2hp)||0;
+			setAttrs({
+				"party2maxhp": hp
+			});
+		});
+	});
+	on("change:party3hp sheet:opened", function() {
+		getAttrs(["party3hp"], function(values) {
+			let hp = parseInt(values.party3hp)||0;
+			setAttrs({
+				"party3maxhp": hp
+			});
+		});
+	});
+	on("change:party4hp sheet:opened", function() {
+		getAttrs(["party4hp"], function(values) {
+			let hp = parseInt(values.party4hp)||0;
+			setAttrs({
+				"party4maxhp": hp
+			});
+		});
+	});
+	on("change:party5hp sheet:opened", function() {
+		getAttrs(["party5hp"], function(values) {
+			let hp = parseInt(values.party5hp)||0;
+			setAttrs({
+				"party5maxhp": hp
+			});
+		});
+	});
+	on("change:party6hp sheet:opened", function() {
+		getAttrs(["party6hp"], function(values) {
+			let hp = parseInt(values.party6hp)||0;
+			setAttrs({
+				"party6maxhp": hp
+			});
+		});
+	});
+</script>
