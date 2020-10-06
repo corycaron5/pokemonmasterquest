@@ -6,6 +6,7 @@
 		<button type="action" name="act_character" >Character</button>
 		<button type="action" name="act_party" >Party</button>
 		<button type="action" name="act_pc" >PC</button>
+		<button type="action" name="act_badges" >Badge Case</button>
 	</div>
 </div>
 <input type='hidden' class='sheet-tabstoggle' name='attr_sheetTab'  value='character'  />
@@ -142,61 +143,66 @@
 </div>
 <div class="pc">
 	<h2>Pokemon Storage Box</h2>
-	<fieldset class="repeating_pc"> 
-		<div class="flex-left-wrap">
-			<input type="text" name='attr_party1name'>
-			<input type="checkbox" class="toggle-stats-show" name='attr_party1show' value="1">
-			<div class="break"></div>
-			<div class="pokestats">
-				<div class="flex-left-nowrap">
-					<label>HP</label>
-					<input type="number" name='attr_pchp' value=0 min=0>
+	<div class="2colrow">
+		<div class="col">
+			<fieldset class="repeating_pc"> 
+				<div class="flex-left-wrap">
+					<span></span>
+					<input type="text" class="padded-left" name='attr_party1name'>
+					<input type="checkbox" class="toggle-stats-show" name='attr_party1show' value="1">
+					<div class="break"></div>
+					<div class="pokestats">
+						<div class="flex-left-nowrap">
+							<label>HP</label>
+							<input type="number" name='attr_pchp' value=0 min=0>
+						</div>
+						<div class="flex-left-nowrap">
+							<label>Attack</label>
+							<input type="number" name='attr_pcatk' value=0 min=0>
+						</div>
+						<div class="flex-left-nowrap">
+							<label>Defense</label>
+							<input type="number" name='attr_pcdef' value=0 min=0>
+						</div>
+						<div class="flex-left-nowrap">
+							<label>Sp. Atk</label>
+							<input type="number" name='attr_pcspatk' value=0 min=0>
+						</div>
+						<div class="flex-left-nowrap">
+							<label>Sp. Def</label>
+							<input type="number" name='attr_pcspdef' value=0 min=0>
+						</div>
+						<div class="flex-left-nowrap">
+							<label>Speed</label>
+							<input type="number" name='attr_pcspeed' value=0 min=0>
+						</div>
+						<div class="flex-left-nowrap">
+							<label>Color</label>
+							<select name="attr_pccolor">
+								<option value="Normal" selected="selected">Normal</option>
+								<option value="Shiny">Shiny</option>
+							</select>
+						</div>
+						<div class="flex-left-nowrap">
+							<label>Gender</label>
+							<select name="attr_pcgender">
+								<option value="Female" selected="selected">Female</option>
+								<option value="Male">Male</option>
+							</select>
+						</div>
+						<div class="flex-left-nowrap">
+							<label>Everstone</label>
+							<input type="checkbox" name='attr_pcever' value="1">
+						</div>
+						<div class="flex-left-nowrap">
+							<label>Victories</label>
+							<input type="number" name='attr_pcwins' value=0 min=0>
+						</div>
+					</div>
 				</div>
-				<div class="flex-left-nowrap">
-					<label>Attack</label>
-					<input type="number" name='attr_pcatk' value=0 min=0>
-				</div>
-				<div class="flex-left-nowrap">
-					<label>Defense</label>
-					<input type="number" name='attr_pcdef' value=0 min=0>
-				</div>
-				<div class="flex-left-nowrap">
-					<label>Sp. Atk</label>
-					<input type="number" name='attr_pcspatk' value=0 min=0>
-				</div>
-				<div class="flex-left-nowrap">
-					<label>Sp. Def</label>
-					<input type="number" name='attr_pcspdef' value=0 min=0>
-				</div>
-				<div class="flex-left-nowrap">
-					<label>Speed</label>
-					<input type="number" name='attr_pcspeed' value=0 min=0>
-				</div>
-				<div class="flex-left-nowrap">
-					<label>Color</label>
-					<select name="attr_pccolor">
-						<option value="Normal" selected="selected">Normal</option>
-						<option value="Shiny">Shiny</option>
-					</select>
-				</div>
-				<div class="flex-left-nowrap">
-					<label>Gender</label>
-					<select name="attr_pcgender">
-						<option value="Female" selected="selected">Female</option>
-						<option value="Male">Male</option>
-					</select>
-				</div>
-				<div class="flex-left-nowrap">
-					<label>Everstone</label>
-					<input type="checkbox" name='attr_pcever' value="1">
-				</div>
-				<div class="flex-left-nowrap">
-					<label>Victories</label>
-					<input type="number" name='attr_pcwins' value=0 min=0>
-				</div>
-			</div>
+			</fieldset>
 		</div>
-	</fieldset>
+	</div>
 </div>
 <div class="party">
 	<div class="col">
@@ -274,23 +280,27 @@
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Attack</label>
-					<button name="roll_attack" type="roll" value="&{template:default} {{name=@{party1name} Attack}} {{Result=[[d6+(@{party1atk})+(@{effectiveness1})]]}}"></button>
+					<button name="roll_attack" class="singleroll" type="roll" value="&{template:default} {{name=@{party1name} Attack}} {{Result=[[d6+(@{party1atk})+(@{effectiveness1})]]}}"></button>
+					<button name="roll_attack" class="doubleroll" type="roll" value="&{template:default} {{name=@{party1name} Attack}} {{Result=[[2d6+(@{party1atk})+(@{effectiveness1})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Defense</label>
-					<button name="roll_defense" type="roll" value="&{template:default} {{name=@{party1name} Defense}} {{Result=[[d6+(@{party1def})]]}}"></button>
+					<button name="roll_defense" class="singleroll" type="roll" value="&{template:default} {{name=@{party1name} Defense}} {{Result=[[d6+(@{party1def})]]}}"></button>
+					<button name="roll_defense" class="doubleroll" type="roll" value="&{template:default} {{name=@{party1name} Defense}} {{Result=[[2d6+(@{party1def})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Sp. Atk</label>
-					<button name="roll_spatk" type="roll" value="&{template:default} {{name=@{party1name} Sp. Atk}} {{Result=[[d6+(@{party1spatk})+(@{effectiveness1})]]}}"></button>
+					<button name="roll_spatk" class="singleroll" type="roll" value="&{template:default} {{name=@{party1name} Sp. Atk}} {{Result=[[d6+(@{party1spatk})+(@{effectiveness1})]]}}"></button>
+					<button name="roll_spatk" class="doubleroll" type="roll" value="&{template:default} {{name=@{party1name} Sp. Atk}} {{Result=[[2d6+(@{party1spatk})+(@{effectiveness1})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Sp. Def</label>
-					<button name="roll_spdef" type="roll" value="&{template:default} {{name=@{party1name} Sp. Def}} {{Result=[[d6+(@{party1spdef})]]}}"></button>
+					<button name="roll_spdef" class="singleroll" type="roll" value="&{template:default} {{name=@{party1name} Sp. Def}} {{Result=[[d6+(@{party1spdef})]]}}"></button>
+					<button name="roll_spdef" class="doubleroll" type="roll" value="&{template:default} {{name=@{party1name} Sp. Def}} {{Result=[[2d6+(@{party1spdef})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Speed</label>
-					<button name="roll_speed" type="roll" value="&{template:default} {{name=@{party1name} Speed}} {{Result=[[(@{party1speed})]]}}"></button>
+					<button name="roll_speed" class="speedroll" type="roll" value="&{template:default} {{name=@{party1name} Speed}} {{Result=[[(@{party1speed})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Victories</label>
@@ -372,23 +382,27 @@
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Attack</label>
-					<button name="roll_attack" type="roll" value="&{template:default} {{name=@{party2name} Attack}} {{Result=[[d6+(@{party2atk})+(@{effectiveness2})]]}}"></button>
+					<button name="roll_attack" class="singleroll" type="roll" value="&{template:default} {{name=@{party2name} Attack}} {{Result=[[d6+(@{party2atk})+(@{effectiveness2})]]}}"></button>
+					<button name="roll_attack" class="doubleroll" type="roll" value="&{template:default} {{name=@{party2name} Attack}} {{Result=[[2d6+(@{party2atk})+(@{effectiveness2})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Defense</label>
-					<button name="roll_defense" type="roll" value="&{template:default} {{name=@{party2name} Defense}} {{Result=[[d6+(@{party2def})]]}}"></button>
+					<button name="roll_defense" class="singleroll" type="roll" value="&{template:default} {{name=@{party2name} Defense}} {{Result=[[d6+(@{party2def})]]}}"></button>
+					<button name="roll_defense" class="doubleroll" type="roll" value="&{template:default} {{name=@{party2name} Defense}} {{Result=[[2d6+(@{party2def})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Sp. Atk</label>
-					<button name="roll_spatk" type="roll" value="&{template:default} {{name=@{party2name} Sp. Atk}} {{Result=[[d6+(@{party2spatk})+(@{effectiveness2})]]}}"></button>
+					<button name="roll_spatk" class="singleroll" type="roll" value="&{template:default} {{name=@{party2name} Sp. Atk}} {{Result=[[d6+(@{party2spatk})+(@{effectiveness2})]]}}"></button>
+					<button name="roll_spatk" class="doubleroll" type="roll" value="&{template:default} {{name=@{party2name} Sp. Atk}} {{Result=[[2d6+(@{party2spatk})+(@{effectiveness2})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Sp. Def</label>
-					<button name="roll_spdef" type="roll" value="&{template:default} {{name=@{party2name} Sp. Def}} {{Result=[[d6+(@{party2spdef})]]}}"></button>
+					<button name="roll_spdef" class="singleroll" type="roll" value="&{template:default} {{name=@{party2name} Sp. Def}} {{Result=[[d6+(@{party2spdef})]]}}"></button>
+					<button name="roll_spdef" class="doubleroll" type="roll" value="&{template:default} {{name=@{party2name} Sp. Def}} {{Result=[[2d6+(@{party2spdef})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Speed</label>
-					<button name="roll_speed" type="roll" value="&{template:default} {{name=@{party2name} Speed}} {{Result=[[(@{party2speed})]]}}"></button>
+					<button name="roll_speed" class="speedroll" type="roll" value="&{template:default} {{name=@{party2name} Speed}} {{Result=[[(@{party2speed})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Victories</label>
@@ -470,23 +484,27 @@
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Attack</label>
-					<button name="roll_attack" type="roll" value="&{template:default} {{name=@{party3name} Attack}} {{Result=[[d6+(@{party3atk})+(@{effectiveness3})]]}}"></button>
+					<button name="roll_attack" class="singleroll" type="roll" value="&{template:default} {{name=@{party3name} Attack}} {{Result=[[d6+(@{party3atk})+(@{effectiveness3})]]}}"></button>
+					<button name="roll_attack" class="doubleroll" type="roll" value="&{template:default} {{name=@{party3name} Attack}} {{Result=[[2d6+(@{party3atk})+(@{effectiveness3})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Defense</label>
-					<button name="roll_defense" type="roll" value="&{template:default} {{name=@{party3name} Defense}} {{Result=[[d6+(@{party3def})]]}}"></button>
+					<button name="roll_defense" class="singleroll" type="roll" value="&{template:default} {{name=@{party3name} Defense}} {{Result=[[d6+(@{party3def})]]}}"></button>
+					<button name="roll_defense" class="doubleroll" type="roll" value="&{template:default} {{name=@{party3name} Defense}} {{Result=[[2d6+(@{party3def})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Sp. Atk</label>
-					<button name="roll_spatk" type="roll" value="&{template:default} {{name=@{party3name} Sp. Atk}} {{Result=[[d6+(@{party3spatk})+(@{effectiveness3})]]}}"></button>
+					<button name="roll_spatk" class="singleroll" type="roll" value="&{template:default} {{name=@{party3name} Sp. Atk}} {{Result=[[d6+(@{party3spatk})+(@{effectiveness3})]]}}"></button>
+					<button name="roll_spatk" class="doubleroll" type="roll" value="&{template:default} {{name=@{party3name} Sp. Atk}} {{Result=[[2d6+(@{party3spatk})+(@{effectiveness3})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Sp. Def</label>
-					<button name="roll_spdef" type="roll" value="&{template:default} {{name=@{party3name} Sp. Def}} {{Result=[[d6+(@{party3spdef})]]}}"></button>
+					<button name="roll_spdef" class="singleroll" type="roll" value="&{template:default} {{name=@{party3name} Sp. Def}} {{Result=[[d6+(@{party3spdef})]]}}"></button>
+					<button name="roll_spdef" class="doubleroll" type="roll" value="&{template:default} {{name=@{party3name} Sp. Def}} {{Result=[[2d6+(@{party3spdef})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Speed</label>
-					<button name="roll_speed" type="roll" value="&{template:default} {{name=@{party3name} Speed}} {{Result=[[(@{party3speed})]]}}"></button>
+					<button name="roll_speed" class="speedroll" type="roll" value="&{template:default} {{name=@{party3name} Speed}} {{Result=[[(@{party3speed})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Victories</label>
@@ -568,23 +586,27 @@
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Attack</label>
-					<button name="roll_attack" type="roll" value="&{template:default} {{name=@{party4name} Attack}} {{Result=[[d6+(@{party4atk})+(@{effectiveness4})]]}}"></button>
+					<button name="roll_attack" class="singleroll" type="roll" value="&{template:default} {{name=@{party4name} Attack}} {{Result=[[d6+(@{party4atk})+(@{effectiveness4})]]}}"></button>
+					<button name="roll_attack" class="doubleroll" type="roll" value="&{template:default} {{name=@{party4name} Attack}} {{Result=[[2d6+(@{party4atk})+(@{effectiveness4})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Defense</label>
-					<button name="roll_defense" type="roll" value="&{template:default} {{name=@{party4name} Defense}} {{Result=[[d6+(@{party4def})]]}}"></button>
+					<button name="roll_defense" class="singleroll" type="roll" value="&{template:default} {{name=@{party4name} Defense}} {{Result=[[d6+(@{party4def})]]}}"></button>
+					<button name="roll_defense" class="doubleroll" type="roll" value="&{template:default} {{name=@{party4name} Defense}} {{Result=[[2d6+(@{party4def})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Sp. Atk</label>
-					<button name="roll_spatk" type="roll" value="&{template:default} {{name=@{party4name} Sp. Atk}} {{Result=[[d6+(@{party4spatk})+(@{effectiveness4})]]}}"></button>
+					<button name="roll_spatk" class="singleroll" type="roll" value="&{template:default} {{name=@{party4name} Sp. Atk}} {{Result=[[d6+(@{party4spatk})+(@{effectiveness4})]]}}"></button>
+					<button name="roll_spatk" class="doubleroll" type="roll" value="&{template:default} {{name=@{party4name} Sp. Atk}} {{Result=[[2d6+(@{party4spatk})+(@{effectiveness4})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Sp. Def</label>
-					<button name="roll_spdef" type="roll" value="&{template:default} {{name=@{party4name} Sp. Def}} {{Result=[[d6+(@{party4spdef})]]}}"></button>
+					<button name="roll_spdef" class="singleroll" type="roll" value="&{template:default} {{name=@{party4name} Sp. Def}} {{Result=[[d6+(@{party4spdef})]]}}"></button>
+					<button name="roll_spdef" class="doubleroll" type="roll" value="&{template:default} {{name=@{party4name} Sp. Def}} {{Result=[[2d6+(@{party4spdef})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Speed</label>
-					<button name="roll_speed" type="roll" value="&{template:default} {{name=@{party4name} Speed}} {{Result=[[(@{party4speed})]]}}"></button>
+					<button name="roll_speed" class="speedroll" type="roll" value="&{template:default} {{name=@{party4name} Speed}} {{Result=[[(@{party4speed})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Victories</label>
@@ -666,23 +688,27 @@
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Attack</label>
-					<button name="roll_attack" type="roll" value="&{template:default} {{name=@{party5name} Attack}} {{Result=[[d6+(@{party5atk})+(@{effectiveness5})]]}}"></button>
+					<button name="roll_attack" class="singleroll" type="roll" value="&{template:default} {{name=@{party5name} Attack}} {{Result=[[d6+(@{party5atk})+(@{effectiveness5})]]}}"></button>
+					<button name="roll_attack" class="doubleroll" type="roll" value="&{template:default} {{name=@{party5name} Attack}} {{Result=[[d6+(@{party5atk})+(@{effectiveness5})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Defense</label>
-					<button name="roll_defense" type="roll" value="&{template:default} {{name=@{party5name} Defense}} {{Result=[[d6+(@{party5def})]]}}"></button>
+					<button name="roll_defense" class="singleroll" type="roll" value="&{template:default} {{name=@{party5name} Defense}} {{Result=[[d6+(@{party5def})]]}}"></button>
+					<button name="roll_defense" class="doubleroll" type="roll" value="&{template:default} {{name=@{party5name} Defense}} {{Result=[[d6+(@{party5def})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Sp. Atk</label>
-					<button name="roll_spatk" type="roll" value="&{template:default} {{name=@{party5name} Sp. Atk}} {{Result=[[d6+(@{party5spatk})+(@{effectiveness5})]]}}"></button>
+					<button name="roll_spatk" class="singleroll" type="roll" value="&{template:default} {{name=@{party5name} Sp. Atk}} {{Result=[[d6+(@{party5spatk})+(@{effectiveness5})]]}}"></button>
+					<button name="roll_spatk" class="doubleroll" type="roll" value="&{template:default} {{name=@{party5name} Sp. Atk}} {{Result=[[d6+(@{party5spatk})+(@{effectiveness5})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Sp. Def</label>
-					<button name="roll_spdef" type="roll" value="&{template:default} {{name=@{party5name} Sp. Def}} {{Result=[[d6+(@{party5spdef})]]}}"></button>
+					<button name="roll_spdef" class="singleroll" type="roll" value="&{template:default} {{name=@{party5name} Sp. Def}} {{Result=[[d6+(@{party5spdef})]]}}"></button>
+					<button name="roll_spdef" class="doubleroll" type="roll" value="&{template:default} {{name=@{party5name} Sp. Def}} {{Result=[[d6+(@{party5spdef})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Speed</label>
-					<button name="roll_speed" type="roll" value="&{template:default} {{name=@{party5name} Speed}} {{Result=[[(@{party5speed})]]}}"></button>
+					<button name="roll_speed" class="speedroll" type="roll" value="&{template:default} {{name=@{party5name} Speed}} {{Result=[[(@{party5speed})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Victories</label>
@@ -764,23 +790,27 @@
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Attack</label>
-					<button name="roll_attack" type="roll" value="&{template:default} {{name=@{party6name} Attack}} {{Result=[[d6+(@{party6atk})+(@{effectiveness6})]]}}"></button>
+					<button name="roll_attack" class="singleroll" type="roll" value="&{template:default} {{name=@{party6name} Attack}} {{Result=[[d6+(@{party6atk})+(@{effectiveness6})]]}}"></button>
+					<button name="roll_attack" class="doubleroll" type="roll" value="&{template:default} {{name=@{party6name} Attack}} {{Result=[[2d6+(@{party6atk})+(@{effectiveness6})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Defense</label>
-					<button name="roll_defense" type="roll" value="&{template:default} {{name=@{party6name} Defense}} {{Result=[[d6+(@{party6def})]]}}"></button>
+					<button name="roll_defense" class="singleroll" type="roll" value="&{template:default} {{name=@{party6name} Defense}} {{Result=[[d6+(@{party6def})]]}}"></button>
+					<button name="roll_defense" class="doubleroll" type="roll" value="&{template:default} {{name=@{party6name} Defense}} {{Result=[[2d6+(@{party6def})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Sp. Atk</label>
-					<button name="roll_spatk" type="roll" value="&{template:default} {{name=@{party6name} Sp. Atk}} {{Result=[[d6+(@{party6spatk})+(@{effectiveness6})]]}}"></button>
+					<button name="roll_spatk" class="singleroll" type="roll" value="&{template:default} {{name=@{party6name} Sp. Atk}} {{Result=[[d6+(@{party6spatk})+(@{effectiveness6})]]}}"></button>
+					<button name="roll_spatk" class="doubleroll" type="roll" value="&{template:default} {{name=@{party6name} Sp. Atk}} {{Result=[[2d6+(@{party6spatk})+(@{effectiveness6})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Sp. Def</label>
-					<button name="roll_spdef" type="roll" value="&{template:default} {{name=@{party6name} Sp. Def}} {{Result=[[d6+(@{party6spdef})]]}}"></button>
+					<button name="roll_spdef" class="singleroll" type="roll" value="&{template:default} {{name=@{party6name} Sp. Def}} {{Result=[[d6+(@{party6spdef})]]}}"></button>
+					<button name="roll_spdef" class="doubleroll" type="roll" value="&{template:default} {{name=@{party6name} Sp. Def}} {{Result=[[2d6+(@{party6spdef})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Speed</label>
-					<button name="roll_speed" type="roll" value="&{template:default} {{name=@{party6name} Speed}} {{Result=[[(@{party6speed})]]}}"></button>
+					<button name="roll_speed" class="speedroll" type="roll" value="&{template:default} {{name=@{party6name} Speed}} {{Result=[[(@{party6speed})]]}}"></button>
 				</div>
 				<div class="flex-left-nowrap">
 					<label>Victories</label>
@@ -790,9 +820,90 @@
 		</div>
 	</div>
 </div>
+<div class="badges">
+	<div class="flex-left-wrap">
+		<div class="flex-left-nowrap">
+			<label>Region</label>
+			<select name="attr_badgeregion">
+				<option value="kanto" selected="selected">Kanto</option>
+				<option value="custom">Custom</option>
+			</select>
+		</div>
+		<div class="break">
+		<input type='hidden' class='sheet-badgetoggle' name='attr_badgeTab' value='kanto'  />
+		<div class="kanto">
+			<div class="flex-left-nowrap">
+				<button type="action" name="act_boulder" class="badge">
+					<span>
+						<input type="hidden" class="badgedisplay" name="attr_boulderdisplay" />
+						<span><img src="https://raw.githubusercontent.com/corycaron5/pokemonmasterquest/main/50px-Boulder_Badge.png" /></span>
+					</span>
+				</button>
+				<button type="action" name="act_cascade" class="badge">
+					<span>
+						<input type="hidden" class="badgedisplay" name="attr_cascadedisplay" />
+						<span><img src="https://raw.githubusercontent.com/corycaron5/pokemonmasterquest/main/50px-Cascade_Badge.png" /></span>
+					</span>
+				</button>
+				<button type="action" name="act_thunder" class="badge">
+					<span>
+						<input type="hidden" class="badgedisplay" name="attr_thunderdisplay" />
+						<span><img src="https://raw.githubusercontent.com/corycaron5/pokemonmasterquest/main/50px-Thunder_Badge.png" /></span>
+					</span>
+				</button>
+				<button type="action" name="act_rainbow" class="badge">
+					<span>
+						<input type="hidden" class="badgedisplay" name="attr_rainbowdisplay" />
+						<span><img src="https://raw.githubusercontent.com/corycaron5/pokemonmasterquest/main/50px-Rainbow_Badge.png" /></span>
+					</span>
+				</button>
+			</div>
+			<div class="flex-left-nowrap">
+				<button type="action" name="act_soul" class="badge">
+					<span>
+						<input type="hidden" class="badgedisplay" name="attr_souldisplay" />
+						<span><img src="https://raw.githubusercontent.com/corycaron5/pokemonmasterquest/main/50px-Soul_Badge.png" /></span>
+					</span>
+				</button>
+				<button type="action" name="act_marsh" class="badge">
+					<span>
+						<input type="hidden" class="badgedisplay" name="attr_marshdisplay" />
+						<span><img src="https://raw.githubusercontent.com/corycaron5/pokemonmasterquest/main/50px-Marsh_Badge.png" /></span>
+					</span>
+				</button>
+				<button type="action" name="act_volcano" class="badge">
+					<span>
+						<input type="hidden" class="badgedisplay" name="attr_volcanodisplay" />
+						<span><img src="https://raw.githubusercontent.com/corycaron5/pokemonmasterquest/main/50px-Volcano_Badge.png" /></span>
+					</span>
+				</button>
+				<button type="action" name="act_earth" class="badge">
+					<span>
+						<input type="hidden" class="badgedisplay" name="attr_earthdisplay" />
+						<span><img src="https://raw.githubusercontent.com/corycaron5/pokemonmasterquest/main/50px-Earth_Badge.png" /></span>
+					</span>
+				</button>
+			</div>
+		</div>
+		<div class="custom">
+			<div class="2colrow">
+				<div class="col">
+					<div class="2colrow">
+						<div class="col">
+							<fieldset class="repeating_custombadges">
+								<span></span>
+								<input type="text" class="padded-left" name='attr_badge'>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 <script type="text/worker">
-    const buttonlist = ["character","pc", "party"];
+    const buttonlist = ["character","pc", "party", "badges"];
     buttonlist.forEach(button => {
         on(`clicked:${button}`, function() {
             setAttrs({
@@ -800,6 +911,26 @@
             });
         });
     });
+	const toggleList = ["boulder","cascade","earth","marsh","rainbow","soul","thunder","volcano"];
+	toggleList.forEach(function(button) {
+		on(`clicked:${button}`, function() {
+			const flag = `${button}display`;
+			// Check the current value of the hidden flag.
+			getAttrs([flag], function(v) {
+				// Update the value of the hidden flag to "1" for checked or "0" for unchecked.
+				setAttrs({
+					[flag]: (v[flag] !== "1" ? "1" : "0")
+				});
+			});
+		});
+	});
+	on("change:badgeregion", function() {
+		getAttrs(["badgeregion"], function(values) {
+			setAttrs({
+				"badgeTab": values.badgeregion
+			});
+		});
+	});
 	on("change:party1hp sheet:opened", function() {
 		getAttrs(["party1hp"], function(values) {
 			let hp = parseInt(values.party1hp)||0;
